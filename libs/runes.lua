@@ -112,6 +112,7 @@ local wordlines={
 	t={1,2,3},--{1,3,5,6},
 	v={5,6},
 	all={1,2,3,4,5,6,7},
+	["'"]={3,6},--glottal stop
 }
 local linecoords={
 	{{0,0},{1,0}},

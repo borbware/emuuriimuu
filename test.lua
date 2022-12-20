@@ -7,11 +7,11 @@ require "libs.runes"
 ---------------------- 
 
 local runetext="e-muu-rom"
--- runetext=[[e-rit-täen mui-nae-sen u-to-pian
--- us-seem-mi-ten raa-han-o-ma-siks
+-- runetext=[[e-rit-täem mui-nae-se' u-to-pia'
+-- us-seem-mi-ter raa-han-o-ma-siks
 -- o-sot-taa-tun-neet me-täh-heŋ-ŋet
 -- ]]
--- runetext="mui-nae-sen u-to-pian me-täh-heŋ-ŋet"
+--runetext="mui-nae-se' u-to-piam me-täh-heŋ-ŋet"
 
 local padding={
     x=50,
@@ -21,7 +21,10 @@ local scale=50
 local linespacing=scale
 local centering=true
 local strokewidth=7
-local color="#000000"
+local color="#30346d"
+--140c1c black
+--30346d dark blue
+--deeed6 white
 
 ---------------------- 
 -- DON'T EDIT:
