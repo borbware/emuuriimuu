@@ -1,5 +1,5 @@
 
-require "libs.utf8"
+require "ext.utf8"
 require "libs.utils"
 local savedrunes={}
 

@@ -1,5 +1,5 @@
 package.path = package.path .. ";" .. "..\\?.lua"
-require "svg.svg"
+require "ext.svg-lua.svg"
 require "libs.runes"
 
 ---------------------- 

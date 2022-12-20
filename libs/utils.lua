@@ -19,3 +19,5 @@ function string:split(delimiter)--jared allard --https://gist.github.com/jaredal
 	to(result,string.sub(self,from))
 	return result
 end
+
+function setlen(s,l,char)char=char or " ";if utf8len(s)<l then return setlen(s..char,l,char)else return s end end
