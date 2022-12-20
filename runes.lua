@@ -76,10 +76,9 @@ function printrunes(svg,textline,x,y,color,scale,strokeWidth,centered,y_linebrea
 			len_ref=savedrunes[lin].len or printruneline(svg,lin,x,136,color,scale,strokeWidth,i,0,0)
 		end
 		line_len,viivs_drawn=printruneline(svg,lin,x-len_ref/2,y,color,scale,strokeWidth,i,y_linebreak,viivs_drawn)
-		--fulllen=fulllen+line_len
 		fulllen=max(fulllen,line_len)
 	end
-	return fulllen,viivs_drawn,#lines
+	return fulllen,#lines,viivs_drawn
 end
 
 local wordlines={
