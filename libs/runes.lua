@@ -1,6 +1,6 @@
 
-require "utf8"
-require "utils"
+require "libs.utf8"
+require "libs.utils"
 local savedrunes={}
 
 local function splitToSyllables(text)

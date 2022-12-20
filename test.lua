@@ -1,6 +1,6 @@
 package.path = package.path .. ";" .. "..\\?.lua"
-require "svg-min"
-require "runes"
+require "svg.svg"
+require "libs.runes"
 
 ---------------------- 
 -- EDIT THESE LINES:
