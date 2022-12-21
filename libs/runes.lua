@@ -62,20 +62,21 @@ local function printruneline(svg,lin,x,y,color,scale,strokeWidth,strokeLineCap,i
 	return len,viivs_drawn
 end
 
-function printrunes(svg,textline,x,y,color,scale,strokeWidth,strokeLineCap,centered,y_linebreak)
+function printrunes(svg,textline,x,y,color,scale,strokeWidth,strokeLineCap,centered,y_linebreak,centeredgrid)
 	y_linebreak=y_linebreak or 0
 	local lines=tolines(textline)
 	local viivs_drawn=0
 	local fulllen=0
 	for i,lin in ipairs(lines)do
-		local len_ref,line_len=0,0
+		local xoffset,line_len=0,0
 		if not savedrunes[lin]then
 			savedrunes[lin]={syllables={}}
 		end
 		if centered then
-			len_ref=savedrunes[lin].len or printruneline(svg,lin,x,136,color,scale,strokeWidth,strokeLineCap,i,0,0)
+			local len_ref=savedrunes[lin].len or printruneline(svg,lin,x,136,color,scale,strokeWidth,strokeLineCap,i,0,0)
+			xoffset=centeredgrid and math.ceil(len_ref/2/scale)*scale or len_ref/2
 		end
-		line_len,viivs_drawn=printruneline(svg,lin,x-len_ref/2,y,color,scale,strokeWidth,strokeLineCap,i,y_linebreak,viivs_drawn)
+		line_len,viivs_drawn=printruneline(svg,lin,x-xoffset,y,color,scale,strokeWidth,strokeLineCap,i,y_linebreak,viivs_drawn)
 		fulllen=max(fulllen,line_len)
 	end
 	return fulllen,#lines,viivs_drawn
