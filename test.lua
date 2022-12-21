@@ -11,7 +11,7 @@ local runetext="e-muu-rom"
 -- us-seem-mi-ter raa-han-o-ma-siks
 -- o-sot-taa-tun-neet me-täh-heŋ-ŋet
 -- ]]
---runetext="mui-nae-se' u-to-piam me-täh-heŋ-ŋet"
+--runetext="mui-nae-se'\nu-to-piam\nme-täh-heŋ-ŋet"
 
 local padding={
     x=50,
@@ -21,6 +21,7 @@ local scale=50
 local linespacing=scale
 local centering=true
 local strokewidth=7
+local strokelinecap="round"
 local color="#30346d"
 --140c1c black
 --30346d dark blue
@@ -33,12 +34,12 @@ local color="#30346d"
 local xoffset=0
 if centering then--calculate offset
     local temprunes = svg:create()
-    local width = printrunes(temprunes,runetext,padding.x,padding.y,color,scale,strokewidth,centering,scale*2+linespacing)
+    local width = printrunes(temprunes,runetext,padding.x,padding.y,color,scale,strokewidth,strokelinecap,centering,scale*2+linespacing)
     xoffset=width/2
 end
 
 local runes = svg:create()
-local width,lines = printrunes(runes,runetext,padding.x+xoffset,padding.y,color,scale,strokewidth,centering,scale*2+linespacing)
+local width,lines = printrunes(runes,runetext,padding.x+xoffset,padding.y,color,scale,strokewidth,strokelinecap,centering,scale*2+linespacing)
 runes.width = width + padding.x*2
 runes.height = scale*2*lines + linespacing*(lines-1) + padding.y*2
 print(runes:draw())

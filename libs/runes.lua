@@ -47,14 +47,14 @@ local function splitToSyllables(text)
 	return word
 end
 
-local function printruneline(svg,lin,x,y,color,scale,strokeWidth,i,y_linebreak,viivs_drawn)
+local function printruneline(svg,lin,x,y,color,scale,strokeWidth,strokeLineCap,i,y_linebreak,viivs_drawn)
 	local len=0
 	local wordobj=savedrunes[lin]--words,syllables
 	wordobj.words=wordobj.words or lin:split(" ")
 	for j,text in ipairs(wordobj.words)do
 		local word=wordobj.syllables[text] or splitToSyllables(text)
 		wordobj.syllables[text]=word
-		word.len,viivs_drawn=printruneword(svg,word,x+len,y+(i-1)*y_linebreak,color,scale,strokeWidth,viivs_drawn)
+		word.len,viivs_drawn=printruneword(svg,word,x+len,y+(i-1)*y_linebreak,color,scale,strokeWidth,strokeLineCap,viivs_drawn)
 		len=len+word.len
 		if j<#wordobj.words then len=len+scale*3 end
 	end
@@ -62,7 +62,7 @@ local function printruneline(svg,lin,x,y,color,scale,strokeWidth,i,y_linebreak,v
 	return len,viivs_drawn
 end
 
-function printrunes(svg,textline,x,y,color,scale,strokeWidth,centered,y_linebreak)
+function printrunes(svg,textline,x,y,color,scale,strokeWidth,strokeLineCap,centered,y_linebreak)
 	y_linebreak=y_linebreak or 0
 	local lines=tolines(textline)
 	local viivs_drawn=0
@@ -73,9 +73,9 @@ function printrunes(svg,textline,x,y,color,scale,strokeWidth,centered,y_linebrea
 			savedrunes[lin]={syllables={}}
 		end
 		if centered then
-			len_ref=savedrunes[lin].len or printruneline(svg,lin,x,136,color,scale,strokeWidth,i,0,0)
+			len_ref=savedrunes[lin].len or printruneline(svg,lin,x,136,color,scale,strokeWidth,strokeLineCap,i,0,0)
 		end
-		line_len,viivs_drawn=printruneline(svg,lin,x-len_ref/2,y,color,scale,strokeWidth,i,y_linebreak,viivs_drawn)
+		line_len,viivs_drawn=printruneline(svg,lin,x-len_ref/2,y,color,scale,strokeWidth,strokeLineCap,i,y_linebreak,viivs_drawn)
 		fulllen=max(fulllen,line_len)
 	end
 	return fulllen,#lines,viivs_drawn
@@ -123,7 +123,7 @@ local linecoords={
 	{{1,1},{1,2}},
 	{{1,2},{0,2}},
 }
-function printruneword(svg,word,x,y,color,scale,strokeWidth,viivs_drawn)
+function printruneword(svg,word,x,y,color,scale,strokeWidth,strokeLineCap,viivs_drawn)
 	local function drawChar(lines,x,y,color,flip)
 		if not lines then return 0 end
 		if flip then x=x+scale end
@@ -134,7 +134,7 @@ function printruneword(svg,word,x,y,color,scale,strokeWidth,viivs_drawn)
             svg:addLine(
                 x+k*coord[1][1]*scale,y+coord[1][2]*scale,
                 x+k*coord[2][1]*scale,y+coord[2][2]*scale,
-                color,strokeWidth)
+                color,strokeWidth,nil,strokeLineCap)
             viivs_drawn=viivs_drawn+1
             len=scale
 		end

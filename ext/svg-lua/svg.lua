@@ -214,7 +214,7 @@ end
 --      stroke: string => lines color
 --      strokeWidth: string => lines width
 --      fill: string => fill color
-function svg:Line(x1, y1, x2, y2, stroke, strokeWidth, fill)
+function svg:Line(x1, y1, x2, y2, stroke, strokeWidth, fill, strokeLineCap)
     local options = {
         x1 = x1 or 15,
         y1 = y1 or 15,
@@ -227,13 +227,17 @@ function svg:Line(x1, y1, x2, y2, stroke, strokeWidth, fill)
     if not (strokeWidth == nil) and not (strokeWidth == "") then
         options["stroke-width"] = strokeWidth
     end
+    --edit by borb:
+    if not (strokeLineCap == nil) and not (strokeLineCap == "") then
+        options["stroke-linecap"] = strokeLineCap
+    end
     if not (fill == nil) and not (fill == "") then
         options.fill = fill
     end
     return self.Element:create("line", options)
 end
-function svg:addLine(x1, y1, x2, y2, stroke, strokeWidth, fill)
-    self:add(self:Line(x1, y1, x2, y2, stroke, strokeWidth, fill))
+function svg:addLine(x1, y1, x2, y2, stroke, strokeWidth, fill, strokeLineCap)
+    self:add(self:Line(x1, y1, x2, y2, stroke, strokeWidth, fill, strokeLineCap))
 end
 
 
