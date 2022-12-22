@@ -7,11 +7,12 @@ require "libs.runes"
 ---------------------- 
 
 local runetext="e-muu-rom"
--- runetext=[[e-rit-täem mui-nae-se' u-to-pia'
--- us-seem-mi-ter raa-han-o-ma-siks
--- o-sot-taa-tun-neet me-täh-heŋ-ŋet
--- ]]
+runetext=[[e-rit-täem mui-nae-se' u-to-pia'
+us-seem-mi-ter raa-ha'-o-ma-siks
+o-sot-taa-tun-neet me-täh-heŋ-ŋet
+]]
 --runetext="mui-nae-se'\nu-to-piam\nme-täh-heŋ-ŋet"
+runetext="mui-nae-se' u-to-piam me-täh-heŋ-ŋet"
 
 local padding={
     x=50,
