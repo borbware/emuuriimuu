@@ -15,20 +15,27 @@ o-sot-taa-tun-neet me-täh-heŋ-ŋet
 runetext="mui-nae-se' u-to-piam me-täh-heŋ-ŋet"
 runetext="skan-ne-roe-ja"
 
-local padding={
-    x=50,
-    y=50,
-}
+
 local scale=50
-local linespacing=scale
-local centering=true
-local centeredgrid=true
 local strokewidth=7
-local strokelinecap="round"
 local color="#30346d"
 --140c1c black
 --30346d dark blue
 --deeed6 white
+
+---------------------- 
+-- MOST LIKELY DON'T HAVE TO EDIT:
+---------------------- 
+
+local padding={
+    x=50,
+    y=50,
+}
+local centering=true
+local centeredgrid=true
+
+local linespacing=scale
+local strokelinecap="round"
 
 ---------------------- 
 -- DON'T EDIT:
