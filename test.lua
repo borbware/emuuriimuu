@@ -14,7 +14,7 @@ o-sot-taa-tun-neet me-täh-heŋ-ŋet
 --runetext="mui-nae-se'\nu-to-piam\nme-täh-heŋ-ŋet"
 runetext="mui-nae-se' u-to-piam me-täh-heŋ-ŋet"
 runetext="skan-ne-roe-ja"
-
+runetext="a-la-ku-pe-rä-ne' iä-ni-rae-ta"
 
 local scale=50
 local strokewidth=7
