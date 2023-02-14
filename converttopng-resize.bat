@@ -1,0 +1,1 @@
+magick convert -background none -resize 615 %1 %1.png

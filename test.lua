@@ -15,13 +15,17 @@ o-sot-taa-tun-neet me-täh-heŋ-ŋet
 runetext="mui-nae-se' u-to-piam me-täh-heŋ-ŋet"
 runetext="skan-ne-roe-ja"
 runetext="a-la-ku-pe-rä-ne' iä-ni-rae-ta"
+runetext="e-rit-täem mui-nae-se' u-to-pia' us-seem-mi-ter raa-ha'-o-ma-siks o-sot-taa-tun-neet me-täh-heŋ-ŋet"
+
+
 
 local scale=50
 local strokewidth=7
-local color="#30346d"
+local color="#deeed6"
 --140c1c black
 --30346d dark blue
 --deeed6 white
+--8595a1 light gray
 
 ---------------------- 
 -- MOST LIKELY DON'T HAVE TO EDIT:
