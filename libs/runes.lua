@@ -7,31 +7,36 @@ local function splitToSyllables(text)
 	local VOWELS="aeiouyäö"--local CONSONANTS="hjklmnprstvŋ"
 	local tavut=text:split("-")--CVVVCCC
 	local word={}
-	local wordlen=0
 	for i,tavu in ipairs(tavut)do
 		local chars={const1="",vowel="",const2="",}
 		local j=1
-		for tavu_index=1,7 do
+		local mode="const1"
+		for k=1,8 do
 			local c=utf8sub(tavu,j,j)
 			if c==""then break end
-			if tavu_index==1 then
+			if mode=="const1"then
 				if not VOWELS:find(c)then
-					chars.const1=c
+					chars.const1=chars.const1..c
 					j=j+1
+				else
+					mode="vowel"
 				end
-			elseif tavu_index>=2 and tavu_index<=4 then
+			elseif mode=="vowel"then
 				if VOWELS:find(c)then
 					chars.vowel=chars.vowel..c
 					j=j+1
+				else
+					mode="const2"
 				end
-			elseif tavu_index>=5 then
+			elseif mode=="const2"then
 				if not VOWELS:find(c)then
 					chars.const2=chars.const2..c
 					j=j+1
 				end
 			end
 		end
-		chars.c1=utf8sub(chars.const1,1,1)
+		chars.c0=utf8sub(chars.const1,1,1)
+		chars.c1=utf8sub(chars.const1,2,2)
 		chars.v1=utf8sub(chars.vowel,1,1)
 		chars.v2=utf8sub(chars.vowel,2,3)
 		if chars.v1..chars.v2=="uae"then
@@ -143,14 +148,15 @@ function printruneword(svg,word,x,y,color,scale,strokeWidth,strokeLineCap,viivs_
 	end
 	local len=0
 	for i,chars in ipairs(word)do
-		len=len+drawChar(wordlines[chars.c1],x+len,y,color,true)-->
+		drawChar(wordlines[chars.c1],x+len,y,color,true)-->
+		len=len+drawChar(wordlines[chars.c0],x+len,y,color,true)-->
 
 		len=len+drawChar(wordlines[chars.v1],x+len,y,color)		--<
 		len=len+drawChar(wordlines[chars.v2],x+len,y,color,true)-->
-		local len1=len
+
+		drawChar(wordlines[chars.c3],x+len,y,color)				--<
+		drawChar(wordlines[chars.c4],x+len,y,color)				--<
 		len=len+drawChar(wordlines[chars.c2],x+len,y,color)		--<
-		drawChar(wordlines[chars.c3],x+len1,y,color)			--<
-		drawChar(wordlines[chars.c4],x+len1,y,color)			--<
 		if i<#word then len=len+scale end
 	end
 	return len,viivs_drawn
